@@ -1,0 +1,4 @@
+select COUNT(*) from lineitem
+    join orders on o_orderkey=l_orderkey
+    join customer on c_custkey=o_custkey
+    group by c_custkey
