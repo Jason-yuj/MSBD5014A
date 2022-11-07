@@ -1,4 +1,3 @@
-# This is a sample Python script.
 import psycopg2 as psql
 import config
 from configparser import ConfigParser

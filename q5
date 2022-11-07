@@ -1,0 +1,6 @@
+select COUNT(*), (l_suppkey,c_custkey) from lineitem
+    join orders on o_orderkey=l_orderkey
+    join customer on c_custkey=o_custkey
+    join supplier on l_suppkey=s_suppkey
+    where s_nationkey=c_nationkey
+    group by (l_suppkey,c_custkey)
