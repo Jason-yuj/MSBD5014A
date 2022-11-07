@@ -6,9 +6,13 @@ import math
 
 def LpSolver(user_set, value, j):
     mod = Model(name="Linear Program")
+    # variables for users
     users = {}
+    # variables for user sets
     s = {}
+    # objective function
     obj_fn = 0
+    # constraint
     t = 0
     for i in range(len(user_set)):
         su, cu = re.findall(r'\d+', user_set[i])
@@ -29,9 +33,10 @@ def LpSolver(user_set, value, j):
     mod.add_constraint(t <= j)
     mod.set_objective('min', obj_fn)
     mod.solve()
+    # only need int
     return math.ceil(mod.objective_value)
 
-
+# this part is for testing
 if __name__ == '__main__':
     opt_mod = Model(name="Simple Program")
     x = opt_mod.continuous_var(name="x", lb=0)
