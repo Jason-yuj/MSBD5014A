@@ -4,12 +4,12 @@ from configparser import ConfigParser
 
 
 # connect to the database
-def connect(q):
+def connect(q, dbfile):
     """ Connect to the PostgreSQL database server """
     conn = None
     try:
         # read connection parameters
-        params = config()
+        params = config(filename=dbfile)
 
         # connect to the PostgreSQL server
         conn = psql.connect(**params)
@@ -31,8 +31,9 @@ def connect(q):
             conn.close()
             return res
 
+
 # read the configuration of the database
-def config(filename='../database.ini', section='postgresql'):
+def config(filename, section='postgresql'):
     # create a parser
     parser = ConfigParser()
     # read config file
@@ -48,4 +49,3 @@ def config(filename='../database.ini', section='postgresql'):
         raise Exception('Section {0} not found in the {1} file'.format(section, filename))
 
     return db
-

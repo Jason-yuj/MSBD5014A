@@ -2,5 +2,6 @@ psycopg2
 cplex
 config
 docplex
-more-itertools
 numpy
+tqdm
+matplotlib

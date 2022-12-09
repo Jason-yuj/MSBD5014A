@@ -1,4 +1,5 @@
 from random import choices
+# this file is for unit-test some functionality
 
 if __name__ == '__main__':
     population = [1, 2, 3, 4, 5, 6]

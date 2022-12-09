@@ -1,10 +1,11 @@
 import operator
-import more_itertools
 from heapq import nlargest
 import math
-from cplex2 import LpSolver
+from src.cplex2 import LpSolver
 import time
 import numpy as np
+from tqdm import tqdm
+import matplotlib.pyplot as plt
 
 
 def inverse(result, l, epi, beta):
@@ -23,7 +24,6 @@ def inverse(result, l, epi, beta):
 
     # we would like to get the true result from here
     true_value = sum(t)
-    print(true_value)
 
     # possible max value D from the query
     D = 1e3 * len(t)
@@ -35,19 +35,19 @@ def inverse(result, l, epi, beta):
 
     # case for l = 1
     if l == 1:
-        for j in range(2 * tau + 1):
+        for j in tqdm(range(2 * tau + 1)):
             inverses.append(true_value - sum(nlargest(j, t)))
 
     # case for l = 2
     elif l == 2:
         user_set = [i[1] for i in result]
-        for j in range(2 * tau + 1):
+        for j in tqdm(range(2 * tau + 1)):
             # use the LP solver the get the shifted inverse
             inverses.append(LpSolver(user_set, t, j))
 
     # based on f_tild(v,j) to get s(v,j)
     prob = get_distribution(inverses, D, tau)
-    return prob
+    return prob, true_value, min(inverses), max(inverses)
 
 
 def get_distribution(inverses, D, tau):
@@ -56,7 +56,7 @@ def get_distribution(inverses, D, tau):
 
     prob = np.zeros(int(D+1))
     prob += (-tau-1)
-    # we only need mannually check r between min_inverse and max_inverse, everything else is the same
+    # we only need manually check r between min_inverse and max_inverse, everything else is the same
     # follow the standard process in the paper
     for r in range(min_inverse, max_inverse+1):
         prob[r] -= (-tau-1)
