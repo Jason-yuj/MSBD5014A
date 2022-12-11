@@ -40,7 +40,7 @@ Or get dbgen from [GitHub](https://github.com/electrum/tpch-dbgen)
 - **tpcd.h**
   add the following:
 ```
-      #ifdef POSTGRESQL <<<<<和makefile中的保持一致
+      #ifdef POSTGRESQL <<<<< same as makefile
       #define GEN_QUERY_PLAN  "EXPLAIN PLAN"
       #define START_TRAN      "SET TRANSACTION"
       #define END_TRAN        "COMMIT;"
