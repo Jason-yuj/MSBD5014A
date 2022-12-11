@@ -1,7 +1,8 @@
-from random import choices
+from sortedcontainers import SortedDict
+import numpy as np
 # this file is for unit-test some functionality
 
 if __name__ == '__main__':
-    population = [1, 2, 3, 4, 5, 6]
-    weights = [0.1, 0.05, 0.05, 0.2, 0.4, 0.2]
-    print(choices(population, weights))
+    a = [ 1,1,2,3,4]
+    a = np.array(a)
+    print(np.argmin(a[a<2]))

@@ -5,3 +5,4 @@ docplex
 numpy
 tqdm
 matplotlib
+sortedcontainers
