@@ -74,3 +74,10 @@ true query result: 600572
 relative error: 0.008350372644745342
 
 ```
+
+## Query
+
+- q12 is a count query for l = 1
+- q5 is a count query for l = 2
+- q7 is a k-selection query for l = 2
+- q18 is a k-selection query for l = 1
