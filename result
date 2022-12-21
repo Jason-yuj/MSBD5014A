@@ -1,0 +1,52 @@
+q7 k-selection median l=2, k=0.5
+
+data size = 0.1 GB
+epsilon 1
+processing time: 70.72734785079956
+query result over DP: 3396.0
+true query result: 32764.40712
+relative error: 0.8963509399830702
+
+epsilon 2
+processing time: 70.6373701095581
+query result over DP: 4776.0
+true query result: 32764.40712
+relative error: 0.8542320640044593
+
+epsilon 4
+processing time: 69.40405082702637
+query result over DP: 17955.0
+true query result: 32764.40712
+relative error: 0.451996798408724
+
+epsilon 8
+processing time: 70.2179958820343
+query result over DP: 21039.0
+true query result: 32764.40712
+relative error: 0.357870266873915
+
+data size = 0.5 GB
+epsilon=1
+processing time: 1369.821238040924
+query result over DP: 21467.0
+true query result: 35016.9729
+relative error: 0.3869544331743193
+
+epsilon=2
+processing time: 1363.3109138011932
+query result over DP: 28377.0
+true query result: 35016.9729
+relative error: 0.1896215563510346
+
+epsilon=4
+processing time: 1359.0228898525238
+query result over DP: 32098.0
+true query result: 35016.9729
+relative error: 0.0833588016969908
+
+epsilon=8
+processing time: 1389.2760548591614
+query result over DP: 33277.0
+true query result: 35016.9729
+relative error: 0.04968941504364018
+

@@ -5,9 +5,21 @@ import numpy as np
 from random import choices
 import argparse
 import matplotlib.pyplot as plt
+import math
 import docplex
 from docplex.mp.model import Model
 
+
+def rank_error(res, k, private_result):
+    values = [float(i[0]) for i in res]
+    k = math.ceil((len(res) - 1) * (1 - k))
+    ele = min(values, key=lambda x: abs(x - private_result))
+    first_idx = values.index(ele)
+    last_idx = len(values) - 1 - values[::-1].index(ele)
+    if first_idx <= k <= last_idx:
+        return 0
+    else:
+        return min(abs(last_idx-k), abs(first_idx-k))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='sql over DP demo')
@@ -54,5 +66,7 @@ if __name__ == '__main__':
     print("query result over DP: {}".format(result))
     print("true query result: {}".format(true_value))
     print("relative error: {}".format((true_value - result)/true_value))
+    if type == "k":
+        print("rank error: {}".format(rank_error(res, k, result)))
     plt.plot(list(range(min_inverse, max_inverse+1)), prob[min_inverse:max_inverse+1])
     plt.savefig(opt.out)

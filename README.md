@@ -28,6 +28,7 @@ and one background paper:
 
 - all the relational tables will be the same as **tpch**. 
   Typically in this implementation, we generate 100MB data for experiment.
+  (Check database repo for more detail about how we set up)
 
 ## Dependencies
 
@@ -75,9 +76,21 @@ relative error: 0.008350372644745342
 
 ```
 
-## Query
+## Sample Query
 
 - q12 is a count query for l = 1
+```commandline
+ python main.py --q q12 --t count --l 1
+```
 - q5 is a count query for l = 2
+```commandline
+ python main.py --q q15 --t count --l 2
+```
 - q7 is a k-selection query for l = 2
+```commandline
+python main.py --q q7 --t k --l 2 --epi 8 --k 0.5
+```
 - q18 is a k-selection query for l = 1
+```commandline
+python main.py --q q18 --t k --l 1 --k 0.5
+```
